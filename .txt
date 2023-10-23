@@ -1,0 +1,44 @@
+1 >
+When you access the API endpoint with a GET request and provide the username parameter, 
+it will dynamically substitute the value you provided into the response message.
+For example, if you access http://localhost:5000/hello?username=Anoop, the response will be:
+Hello, Anoop!
+
+2>If you don't provide the username parameter(http://localhost:5000/hello), it will return:
+Please provide a username.
+
+Remember to replace Username with the actual name you want to use.
+
+
+
+This code is a simple Flask application that creates a web server and defines a single route 
+at /hello. Let's break it down step by step: 
+
+1> Importing necessary modules:  
+i>  Flask module from the flask package: This module provides the necessary tools 
+    to create a Flask application.
+ii> request module from the flask package: This module helps to handle HTTP requests.
+
+2> Creating the Flask application:
+i>  app = Flask(__name__): This line creates an instance of the Flask application, typically named app. 
+ii> The __name__ argument represents the name of the current module.
+
+3> Defining a route and view function:
+i>  @app.route('/hello', methods=['GET']): This is a decorator that associates the /hello URL path with the hello()
+    function below it. It specifies that the route should handle only GET requests.
+ii> def hello():: This function is the view function that gets executed when the /hello route is accessed.
+
+4> Handling the request:
+
+i>  username = request.args.get('username'): This line retrieves the value of the username parameter 
+from the query string of the request URL.
+ii> if username:: This conditional statement checks if the username variable is not empty or None.
+ii> return f'Hello, {username}!': If a valid username is provided, it returns a string response with a greeting message containing the username.
+iii> else:: If no username is provided, it returns a string response asking for a username.
+
+5>  Running the Flask application:
+i>  if __name__ == '__main__':: This condition checks if the current script is the main script being executed.
+ii> app.run(): If the above condition is true, it starts the Flask development server to run the application.
+
+In summary, this code sets up a Flask server with a single route /hello that expects a GET request 
+with a username parameter. If the username is provided, it returns a personalized greeting; otherwise, it asks for a username. When you run this script, it starts the Flask development server, allowing you to access the route via http://localhost:5000/hello in your web browser.
